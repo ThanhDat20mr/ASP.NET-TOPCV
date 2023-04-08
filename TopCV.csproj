@@ -202,6 +202,7 @@
     <Content Include="Site.Master" />
     <Content Include="src\icons\company.png" />
     <Content Include="src\icons\location.png" />
+    <Content Include="src\icons\search.png" />
     <Content Include="src\img\VHTECH.png" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />

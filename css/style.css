@@ -6,6 +6,10 @@
     background-color: white;
     height: 80px;
     padding: 0px 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
     .menu-panel a {
@@ -23,6 +27,7 @@
     padding: 0;
     background-color: white;
     overflow: hidden;
+    
 }
 
     .menu li {
@@ -86,7 +91,7 @@
 
 }
 .panel {
-    width: 400px;
+    width: 300px;
     margin: 0 auto;
     background-color: #fff;
 
@@ -99,13 +104,14 @@
 }
 
 .panel-body {
-    padding: 20px;
+    padding: 10px;
     position: absolute;
 }
 
 .search-job {
     display: flex;
     align-items: center;
+    padding:0px 0px;
 }
 
 label, input, select {
@@ -115,7 +121,7 @@ label, input, select {
     border-radius: 3px;
     padding: 5px;
     margin-right:0px;
-    margin-left: 50px;
+    margin-left: 30px;
     margin-top: 0;
     margin-bottom: 0;
 }
