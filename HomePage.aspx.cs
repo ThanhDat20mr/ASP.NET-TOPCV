@@ -22,6 +22,7 @@ namespace TopCV
                 lbJobName.Text = jd.jobName;
                 lbCOName.Text = jd.Company.coName;
                 lbDate.Text = jd.date.ToString();
+                
             }
             
         }

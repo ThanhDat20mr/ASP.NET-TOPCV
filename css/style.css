@@ -182,9 +182,38 @@ p {
     font-size: 18px;
     margin-bottom: 20px;
 }
+
 .btnDetail {
     float: right;
 }
 .myTitle{
     font-size:100px;
+}
+
+.icon-text {
+    position: relative;
+
+}
+
+.icon {
+    content: "";
+    display: inline-block;
+    width: 28px;
+    height: 30px;
+    background-repeat: no-repeat;
+  /*  background-image: url('../src/icons/location.png');*/
+    margin-left:0px;
+    position: absolute;
+    margin-top:10px;
+
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.item {
+    padding: 10px;
 }
