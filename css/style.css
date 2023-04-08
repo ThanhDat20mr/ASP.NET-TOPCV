@@ -1,0 +1,190 @@
+﻿
+.menu-panel {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background-color: white;
+    height: 80px;
+    padding: 0px 40px;
+}
+
+    .menu-panel a {
+        color: #333;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        margin-right: 100px;
+        margin-left: 20px;
+    }
+
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    overflow: hidden;
+}
+
+    .menu li {
+        float: left;
+    }
+
+        .menu li a {
+            display: block;
+            color: #01B14F;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 150px;
+    z-index: 1;
+    /* overflow-y:auto; */
+    max-width: 350px;
+    list-style-type: none;
+}
+
+    .submenu li a {
+        color: black;
+        padding: 12px 0px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        font-size: 14px;
+    }
+
+        .submenu li a:hover {
+            background-color: #F0F0F0;
+        }
+
+.menu li:hover .submenu {
+    display: block;
+}
+
+.submenu i {
+    margin-right: 20px;
+    color: #00ff00;
+}
+/*/.submenu li a:before {
+          content: '';
+          display: normal;
+          width: 16px;
+          height: 16px;
+          margin-left: 5px;
+          //background-image: url('D:\DACN\TopCV\src\img\logo_topcv.jpg');
+          background-position: left;
+          background-repeat: no-repeat;
+        }*/
+
+.div {
+    margin-top: 20px;
+
+}
+.panel {
+    width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+
+}
+
+
+.panel-title {
+    margin: 0;
+    font-size: 18px;
+}
+
+.panel-body {
+    padding: 20px;
+    position: absolute;
+}
+
+.search-job {
+    display: flex;
+    align-items: center;
+}
+
+label, input, select {
+    height: 40px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 5px;
+    margin-right:0px;
+    margin-left: 50px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+    input[type="search"], select {
+        width: 200px;
+    }
+
+button[type="submit"] {
+    margin-left: 10px;
+    height: 30px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+    button[type="submit"]:hover {
+        background-color: #0062cc;
+    }
+
+
+.logo {
+    /*justify-content: center;
+    align-items: center;*/
+    margin-right: 0px;
+    display: flex;
+    width: 1000px;
+    margin-left: 25px;
+
+   
+}
+.detai {
+    margin-top: 20px;
+    font-size:20px;
+}
+#COLogo {
+    border: 1px solid black;
+    border-radius: 50%;
+    margin-top: 25px;
+    
+}
+.details {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    padding: 0px 0px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin: 0;
+    font-size: 24px;
+    margin-bottom: 50px;
+    color: #00B14F;
+}
+
+p {
+    margin: 0;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.btnDetail {
+    float: right;
+}
+.myTitle{
+    font-size:100px;
+}

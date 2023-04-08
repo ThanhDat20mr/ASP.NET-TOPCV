@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TopCVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="Carrer">
+          <Key>
+            <PropertyRef Name="CarrerID" />
+          </Key>
+          <Property Name="CarrerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CarrerName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="coID" />
+          </Key>
+          <Property Name="coID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="coName" Type="nvarchar(max)" />
+          <Property Name="coAddress" Type="nvarchar(max)" />
+          <Property Name="scale" Type="varchar" MaxLength="50" />
+          <Property Name="bio" Type="nvarchar(max)" />
+          <Property Name="phone" Type="varchar" MaxLength="11" />
+          <Property Name="FieldID" Type="varchar" MaxLength="50" />
+          <Property Name="CarrerID" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Field">
+          <Key>
+            <PropertyRef Name="FieldID" />
+          </Key>
+          <Property Name="FieldID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FieldName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Jobs">
+          <Key>
+            <PropertyRef Name="jobID" />
+          </Key>
+          <Property Name="jobID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="coID" Type="varchar" MaxLength="50" />
+          <Property Name="jobName" Type="nvarchar(max)" />
+          <Property Name="salary" Type="varchar" MaxLength="50" />
+          <Property Name="amount" Type="int" />
+          <Property Name="method" Type="nvarchar(max)" />
+          <Property Name="level" Type="nvarchar(max)" />
+          <Property Name="sexual" Type="bit" />
+          <Property Name="exp" Type="nvarchar(max)" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="requirements" Type="nvarchar(max)" />
+          <Property Name="benefits" Type="nvarchar(max)" />
+          <Property Name="date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="DoB" Type="datetime" />
+          <Property Name="sexsual" Type="bit" />
+          <Property Name="phone" Type="varchar" MaxLength="11" />
+          <Property Name="address" Type="nvarchar(max)" />
+          <Property Name="avt" Type="varchar" MaxLength="500" />
+          <Property Name="CV" Type="varchar(max)" />
+          <Property Name="coverletter" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK__Company__CarrerI__1A14E395">
+          <End Role="Carrer" Type="Self.Carrer" Multiplicity="0..1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carrer">
+              <PropertyRef Name="CarrerID" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="CarrerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Company__FieldID__1920BF5C">
+          <End Role="Field" Type="Self.Field" Multiplicity="0..1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Field">
+              <PropertyRef Name="FieldID" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="FieldID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Jobs__coID__1CF15040">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="Jobs" Type="Self.Jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="coID" />
+            </Principal>
+            <Dependent Role="Jobs">
+              <PropertyRef Name="coID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Profile__Usernam__1273C1CD">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TopCVModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Carrer" EntityType="Self.Carrer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Field" EntityType="Self.Field" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jobs" EntityType="Self.Jobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profile" EntityType="Self.Profile" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Company__CarrerI__1A14E395" Association="Self.FK__Company__CarrerI__1A14E395">
+            <End Role="Carrer" EntitySet="Carrer" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Company__FieldID__1920BF5C" Association="Self.FK__Company__FieldID__1920BF5C">
+            <End Role="Field" EntitySet="Field" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Jobs__coID__1CF15040" Association="Self.FK__Jobs__coID__1CF15040">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Jobs" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Profile__Usernam__1273C1CD" Association="Self.FK__Profile__Usernam__1273C1CD">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Profile" EntitySet="Profile" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TopCVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TopCVEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Account" EntityType="TopCVModel.Account" />
+          <EntitySet Name="Carrer" EntityType="TopCVModel.Carrer" />
+          <EntitySet Name="Company" EntityType="TopCVModel.Company" />
+          <EntitySet Name="Field" EntityType="TopCVModel.Field" />
+          <EntitySet Name="Jobs" EntityType="TopCVModel.Jobs" />
+          <EntitySet Name="Profile" EntityType="TopCVModel.Profile" />
+          <AssociationSet Name="FK__Profile__Usernam__1273C1CD" Association="TopCVModel.FK__Profile__Usernam__1273C1CD">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Profile" EntitySet="Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Company__CarrerI__1A14E395" Association="TopCVModel.FK__Company__CarrerI__1A14E395">
+            <End Role="Carrer" EntitySet="Carrer" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Company__FieldID__1920BF5C" Association="TopCVModel.FK__Company__FieldID__1920BF5C">
+            <End Role="Field" EntitySet="Field" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Jobs__coID__1CF15040" Association="TopCVModel.FK__Jobs__coID__1CF15040">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Jobs" EntitySet="Jobs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Profile" Relationship="TopCVModel.FK__Profile__Usernam__1273C1CD" FromRole="Account" ToRole="Profile" />
+        </EntityType>
+        <EntityType Name="Carrer">
+          <Key>
+            <PropertyRef Name="CarrerID" />
+          </Key>
+          <Property Name="CarrerID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CarrerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Company" Relationship="TopCVModel.FK__Company__CarrerI__1A14E395" FromRole="Carrer" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="coID" />
+          </Key>
+          <Property Name="coID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="coName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="coAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="scale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="FieldID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CarrerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Carrer" Relationship="TopCVModel.FK__Company__CarrerI__1A14E395" FromRole="Company" ToRole="Carrer" />
+          <NavigationProperty Name="Field" Relationship="TopCVModel.FK__Company__FieldID__1920BF5C" FromRole="Company" ToRole="Field" />
+          <NavigationProperty Name="Jobs" Relationship="TopCVModel.FK__Jobs__coID__1CF15040" FromRole="Company" ToRole="Jobs" />
+        </EntityType>
+        <EntityType Name="Field">
+          <Key>
+            <PropertyRef Name="FieldID" />
+          </Key>
+          <Property Name="FieldID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FieldName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Company" Relationship="TopCVModel.FK__Company__FieldID__1920BF5C" FromRole="Field" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="Jobs">
+          <Key>
+            <PropertyRef Name="jobID" />
+          </Key>
+          <Property Name="jobID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="coID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="jobName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="salary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="method" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="level" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="sexual" Type="Boolean" />
+          <Property Name="exp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="requirements" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="benefits" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Company" Relationship="TopCVModel.FK__Jobs__coID__1CF15040" FromRole="Jobs" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DoB" Type="DateTime" Precision="3" />
+          <Property Name="sexsual" Type="Boolean" />
+          <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="avt" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CV" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="coverletter" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Account" Relationship="TopCVModel.FK__Profile__Usernam__1273C1CD" FromRole="Profile" ToRole="Account" />
+        </EntityType>
+        <Association Name="FK__Profile__Usernam__1273C1CD">
+          <End Type="TopCVModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="TopCVModel.Profile" Role="Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Company__CarrerI__1A14E395">
+          <End Type="TopCVModel.Carrer" Role="Carrer" Multiplicity="0..1" />
+          <End Type="TopCVModel.Company" Role="Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carrer">
+              <PropertyRef Name="CarrerID" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="CarrerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Company__FieldID__1920BF5C">
+          <End Type="TopCVModel.Field" Role="Field" Multiplicity="0..1" />
+          <End Type="TopCVModel.Company" Role="Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Field">
+              <PropertyRef Name="FieldID" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="FieldID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Jobs__coID__1CF15040">
+          <End Type="TopCVModel.Company" Role="Company" Multiplicity="0..1" />
+          <End Type="TopCVModel.Jobs" Role="Jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="coID" />
+            </Principal>
+            <Dependent Role="Jobs">
+              <PropertyRef Name="coID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TopCVModelStoreContainer" CdmEntityContainer="TopCVEntities">
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="TopCVModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carrer">
+            <EntityTypeMapping TypeName="TopCVModel.Carrer">
+              <MappingFragment StoreEntitySet="Carrer">
+                <ScalarProperty Name="CarrerName" ColumnName="CarrerName" />
+                <ScalarProperty Name="CarrerID" ColumnName="CarrerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Company">
+            <EntityTypeMapping TypeName="TopCVModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="CarrerID" ColumnName="CarrerID" />
+                <ScalarProperty Name="FieldID" ColumnName="FieldID" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="bio" ColumnName="bio" />
+                <ScalarProperty Name="scale" ColumnName="scale" />
+                <ScalarProperty Name="coAddress" ColumnName="coAddress" />
+                <ScalarProperty Name="coName" ColumnName="coName" />
+                <ScalarProperty Name="coID" ColumnName="coID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Field">
+            <EntityTypeMapping TypeName="TopCVModel.Field">
+              <MappingFragment StoreEntitySet="Field">
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="FieldID" ColumnName="FieldID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jobs">
+            <EntityTypeMapping TypeName="TopCVModel.Jobs">
+              <MappingFragment StoreEntitySet="Jobs">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="benefits" ColumnName="benefits" />
+                <ScalarProperty Name="requirements" ColumnName="requirements" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="exp" ColumnName="exp" />
+                <ScalarProperty Name="sexual" ColumnName="sexual" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="method" ColumnName="method" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="jobName" ColumnName="jobName" />
+                <ScalarProperty Name="coID" ColumnName="coID" />
+                <ScalarProperty Name="jobID" ColumnName="jobID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profile">
+            <EntityTypeMapping TypeName="TopCVModel.Profile">
+              <MappingFragment StoreEntitySet="Profile">
+                <ScalarProperty Name="coverletter" ColumnName="coverletter" />
+                <ScalarProperty Name="CV" ColumnName="CV" />
+                <ScalarProperty Name="avt" ColumnName="avt" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="sexsual" ColumnName="sexsual" />
+                <ScalarProperty Name="DoB" ColumnName="DoB" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

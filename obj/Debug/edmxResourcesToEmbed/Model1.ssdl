@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TopCVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="20" />
+    <Property Name="Status" Type="varchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="Carrer">
+    <Key>
+      <PropertyRef Name="CarrerID" />
+    </Key>
+    <Property Name="CarrerID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CarrerName" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="coID" />
+    </Key>
+    <Property Name="coID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="coName" Type="nvarchar(max)" />
+    <Property Name="coAddress" Type="nvarchar(max)" />
+    <Property Name="scale" Type="varchar" MaxLength="50" />
+    <Property Name="bio" Type="nvarchar(max)" />
+    <Property Name="phone" Type="varchar" MaxLength="11" />
+    <Property Name="FieldID" Type="varchar" MaxLength="50" />
+    <Property Name="CarrerID" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Field">
+    <Key>
+      <PropertyRef Name="FieldID" />
+    </Key>
+    <Property Name="FieldID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FieldName" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Jobs">
+    <Key>
+      <PropertyRef Name="jobID" />
+    </Key>
+    <Property Name="jobID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="coID" Type="varchar" MaxLength="50" />
+    <Property Name="jobName" Type="nvarchar(max)" />
+    <Property Name="salary" Type="varchar" MaxLength="50" />
+    <Property Name="amount" Type="int" />
+    <Property Name="method" Type="nvarchar(max)" />
+    <Property Name="level" Type="nvarchar(max)" />
+    <Property Name="sexual" Type="bit" />
+    <Property Name="exp" Type="nvarchar(max)" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="requirements" Type="nvarchar(max)" />
+    <Property Name="benefits" Type="nvarchar(max)" />
+    <Property Name="date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" />
+    <Property Name="DoB" Type="datetime" />
+    <Property Name="sexsual" Type="bit" />
+    <Property Name="phone" Type="varchar" MaxLength="11" />
+    <Property Name="address" Type="nvarchar(max)" />
+    <Property Name="avt" Type="varchar" MaxLength="500" />
+    <Property Name="CV" Type="varchar(max)" />
+    <Property Name="coverletter" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK__Company__CarrerI__1A14E395">
+    <End Role="Carrer" Type="Self.Carrer" Multiplicity="0..1" />
+    <End Role="Company" Type="Self.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carrer">
+        <PropertyRef Name="CarrerID" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="CarrerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Company__FieldID__1920BF5C">
+    <End Role="Field" Type="Self.Field" Multiplicity="0..1" />
+    <End Role="Company" Type="Self.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Field">
+        <PropertyRef Name="FieldID" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="FieldID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Jobs__coID__1CF15040">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+    <End Role="Jobs" Type="Self.Jobs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="coID" />
+      </Principal>
+      <Dependent Role="Jobs">
+        <PropertyRef Name="coID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Profile__Usernam__1273C1CD">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Profile">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TopCVModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Carrer" EntityType="Self.Carrer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Field" EntityType="Self.Field" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Jobs" EntityType="Self.Jobs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Profile" EntityType="Self.Profile" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Company__CarrerI__1A14E395" Association="Self.FK__Company__CarrerI__1A14E395">
+      <End Role="Carrer" EntitySet="Carrer" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Company__FieldID__1920BF5C" Association="Self.FK__Company__FieldID__1920BF5C">
+      <End Role="Field" EntitySet="Field" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Jobs__coID__1CF15040" Association="Self.FK__Jobs__coID__1CF15040">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="Jobs" EntitySet="Jobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Profile__Usernam__1273C1CD" Association="Self.FK__Profile__Usernam__1273C1CD">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Profile" EntitySet="Profile" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TopCVModelStoreContainer" CdmEntityContainer="TopCVEntities">
+    <EntitySetMapping Name="Account">
+      <EntityTypeMapping TypeName="TopCVModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carrer">
+      <EntityTypeMapping TypeName="TopCVModel.Carrer">
+        <MappingFragment StoreEntitySet="Carrer">
+          <ScalarProperty Name="CarrerName" ColumnName="CarrerName" />
+          <ScalarProperty Name="CarrerID" ColumnName="CarrerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Company">
+      <EntityTypeMapping TypeName="TopCVModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="CarrerID" ColumnName="CarrerID" />
+          <ScalarProperty Name="FieldID" ColumnName="FieldID" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="bio" ColumnName="bio" />
+          <ScalarProperty Name="scale" ColumnName="scale" />
+          <ScalarProperty Name="coAddress" ColumnName="coAddress" />
+          <ScalarProperty Name="coName" ColumnName="coName" />
+          <ScalarProperty Name="coID" ColumnName="coID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Field">
+      <EntityTypeMapping TypeName="TopCVModel.Field">
+        <MappingFragment StoreEntitySet="Field">
+          <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+          <ScalarProperty Name="FieldID" ColumnName="FieldID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jobs">
+      <EntityTypeMapping TypeName="TopCVModel.Jobs">
+        <MappingFragment StoreEntitySet="Jobs">
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="benefits" ColumnName="benefits" />
+          <ScalarProperty Name="requirements" ColumnName="requirements" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="exp" ColumnName="exp" />
+          <ScalarProperty Name="sexual" ColumnName="sexual" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="method" ColumnName="method" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="jobName" ColumnName="jobName" />
+          <ScalarProperty Name="coID" ColumnName="coID" />
+          <ScalarProperty Name="jobID" ColumnName="jobID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profile">
+      <EntityTypeMapping TypeName="TopCVModel.Profile">
+        <MappingFragment StoreEntitySet="Profile">
+          <ScalarProperty Name="coverletter" ColumnName="coverletter" />
+          <ScalarProperty Name="CV" ColumnName="CV" />
+          <ScalarProperty Name="avt" ColumnName="avt" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="sexsual" ColumnName="sexsual" />
+          <ScalarProperty Name="DoB" ColumnName="DoB" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
