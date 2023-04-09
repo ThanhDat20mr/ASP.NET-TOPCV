@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HomePage.aspx.cs" Inherits="TopCV.HomePage" %>
 
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,29 +11,36 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-+sb8Z7W+5ru5Y5C9GmMAW8yHJmGljKgWPfLZpevBjrNtVp23IH4Z/DO9uJ+vDnfl7VwSjs17j+7Vquu06tLTQ==" crossorigin="anonymous" />
 <link rel="stylesheet" href="css/all.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/slick.css" />
+
 <head runat="server">
     <title></title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>$(document).ready(function () {
+            var slideCount = $('#slider img').length;
+            var currentIndex = 0;
+            function setupSlider() {
+                $('#slider img').hide();
+                $('#slider img:first').show();
 
-    <!--  -->
+                setInterval(function () {
+                    currentIndex++;
+                    if (currentIndex >= slideCount) {
+                        currentIndex = 0;
+                    }
+                    changeSlide();
+                }, 2000);
+            }
+
+            function changeSlide() {
+                $('#slider img').fadeOut();
+                $('#slider img:eq(' + currentIndex + ')').fadeIn();
+            }
+            setupSlider();
+        });
+</script>
+
     <script>
-
-        /*$(document).ready(function () {
-            $('a[href^="#"]').on('click', function (e) {
-                e.preventDefault();
-
-                var target = this.offsetTop-80; //this.hash;
-                //window.scrollTo(500, target);
-                var $target = $(target);
-
-                $('html, body').stop().animate({
-                    'scrollTop': $target = $target.offset().top - 80;
-                }, 500, 'swing', function () {
-
-                    window.location.hash = target;
-                    
-                });
-            });
-        });*/
         $(document).ready(function () {
             $('a[href^="#"]').on('click', function (event) {
                 var target = $(this.getAttribute('href'));
@@ -44,25 +52,12 @@
                 }
             });
         });
-
-
     </script>
-    <script>window.onscroll = function () { myFunction() };
 
-        var navbar = document.getElementById("menu");
-        var sticky = navbar.offsetTop;
-
-        function myFunction() {
-            if (window.pageYOffset >= sticky) {
-                navbar.classList.add("sticky")
-            } else {
-                navbar.classList.remove("sticky");
-            }
-        }</script>
-    
 </head>
 <body style="height: 100px">
-    <form id="form1" runat="server">
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+    <form id="form1" runat="server" method="dialog" >
             
         <nav class="navbar ta-top">
 
@@ -118,6 +113,18 @@
                         <li><a href="#">Mobile App TopCV</a></li>
                     </ul>
                 </li>
+                <li><a href="fProfile.aspx">Tài khoản</asp:Label></a>
+                    <ul class="submenu">
+                        <li><a href="#"><i class="fa-solid fa-money-bill-transfer" style="color: #ffff00;"></i>Nâng cấp tài khoản VIP</a></li>
+                        <li><a href="#"><i class="fa-solid fa-circle-dollar-to-slot"></i>Kích hoạt quà tặng</a></li>
+                        <li><a href="#"><i class="fa-solid fa-id-card-clip"></i>Nhà tuyển dụng xem hồ sơ</a></li>
+                        <li><a href="#"><i class="fa-sharp fa-regular fa-lightbulb"></i>Cài đặt gợi ý việc làm</a></li>
+                        <li><a href="#"><i class="fa-solid fa-envelope-open"></i>Cài đặt nhận email</a></li>
+                        <li><a href="#"><i class="fa-sharp fa-solid fa-shield-halved" style="color: #80ff80;"></i>Cài đặt bảo mật</a></li>
+                        <li><a href="#"><i class="fa-sharp fa-light fa-key-skeleton"></i>Đổi mật khẩu</a></li>
+                        <li><a href="fLogin.aspx" style="color:red;"><i class="fa-solid fa-arrow-right-from-bracket" style="color: #ff0000;"></i>Đăng xuất</a></li>
+                    </ul>
+                </li>
             </ul>
 
          </asp:Panel>
@@ -128,7 +135,7 @@
                 </div>
                 <input type="search" id="txtSearch" name="job-search">
 
-                <asp:DropDownList id="cbxCarrer" runat="server" style="background-image: url('src/icons/company.png'); background-position: left center; background-repeat: no-repeat; padding-left: 50px;" OnLoad="cbxCarrer_Load">
+                <asp:DropDownList id="cbxCarrer" runat="server" style="background-image: url('src/icons/company.png'); background-position: left center; background-repeat: no-repeat; padding-left: 50px;">
                     <asp:ListItem Text="Tất cả" Value="All"></asp:ListItem>
                 </asp:DropDownList>
                 <select id="cbxLocation" name="job-location" style="background-image: url('src/icons/location.png'); background-position: left center; background-repeat: no-repeat; padding-left: 50px;">
@@ -159,16 +166,17 @@
                     </div>
                 </div>
             </asp:Panel>
-            <asp:Panel ID="pnlTab" runat="server" Height="55px" style=" ">
-                <ul class="menu" style="background-color: #F0F0F0; display: flex; justify-content: left; align-items: center; padding: 0px 230px; color: #808080;">
-                    <li><a href='#pnlJD' onclick="scrollToTarget()">Tin tuyển dụng</a></li>
-                    <li><a href='#'>Thông tin công ty</a></li>
-                    <li><a href='#'>Việc làm công ty</a></li>
+            <asp:Panel ID="pnlTab" runat="server" Height="55px" style=" padding:0px 10px; ">
+                <ul class="menu" style="background-color: #F0F0F0; display: flex; justify-content: left; align-items: center; padding: 0px 230px; ">
+                    <la><a href='#pnlJD' onclick="scrollToTarget()">Tin tuyển dụng</a></la>
+                    <la><a href='#pnlInfoCO'>Thông tin công ty</a></la>
+                    <la><a href='#pnlJobSimular'>Việc làm liên quan</a></la>
                 </ul>
             </asp:Panel>
-            
-                <asp:Panel ID="pnlJD" runat="server" BackColor="White" Style="margin-left: 250px; height:2000px;" Width="950px">
+            <div class="big-panel">
+                <asp:Panel ID="pnlJD" runat="server" BackColor="White" Style="margin-left: 250px; height:1300px;" Width="950px">
                     <asp:Label runat="server" Text="Chi tiết tin tuyển dụng" Style="font-size: 30px; border-left: 7px solid #00b14f; padding: 0px 25px;"></asp:Label>
+                    <div class="small_panel">
                     <asp:Panel ID="pnlJDs" runat="server" Height="270px" BackColor="#F2FBF6" Style="margin-left: 15px; margin-right: 350px;border-bottom: 15px solid white;">
                         <asp:Label runat="server" Text="Thông tin chung: " Style="font-size: 18px; text-decoration: underline;"></asp:Label>
                         <div class="grid-container">
@@ -201,38 +209,86 @@
                                 <asp:Label ID="lbExp" runat="server" Text="exp" Style="font-size: 16px;"></asp:Label></p>
                         </div>
                     </asp:Panel>
-
-                    <asp:Panel ID="pnlAddress" runat="server" Height="85px" BackColor="#F2FBF6" Style="margin-left: 15px; margin-right: 350px; padding:10px">
-                        <p>
-                            <asp:Label runat="server" Text="Địa điểm làm việc:" Style="font-size: 18px; text-decoration: underline; margin-left:5px;"></asp:Label>
-                            <br>
-                            <asp:Label ID="lbAddress" runat="server" Text="Address" Style="font-size: 16px; margin-left:15px;"></asp:Label>
-                        </p>
+                        <asp:Panel ID="pnlAddress" runat="server" Height="85px" BackColor="#F2FBF6" Style="margin-left: 15px; margin-right: 350px; padding:10px">
+                        <p><asp:Label runat="server" Text="Địa điểm làm việc:" Style="font-size: 18px; text-decoration: underline; margin-left:5px;"></asp:Label><br>
+                            <asp:Label ID="lbAddress" runat="server" Text="Address" Style="font-size: 16px; margin-left:15px;"></asp:Label> </p>
                     </asp:Panel>
 
                     <asp:Panel ID="pnlContent" runat="server" Height="85px" Style="margin-left: 15px; margin-right: 350px;">
-                        <p style="margin-left: 15px; margin-bottom: 20px; height:auto;">
-                            Mô tả công việc
-                                <br>
-                            <asp:Label ID="lbDesc" runat="server" Text="exp" Style="font-size: 16px; "></asp:Label>
-                        </p>
-                        <p style="margin-left: 15px; margin-bottom: 20px;">
-                            Yêu cầu ứng viên
-                                <br>
-                            <asp:Label ID="lbRequire" runat="server" Text="exp" Style="font-size: 16px; "></asp:Label>
-                        </p>
-                        <p style="margin-left: 15px; margin-bottom: 20px;">
-                            Quyền lợi
-                                <br>
-                            <asp:Label ID="lbBenifit" runat="server" Text="exp" Style="font-size: 16px; "></asp:Label>
-                        </p>
+
+                        <p style="margin-left: 15px; margin-bottom: 20px; height:auto;"><strong>Mô tả công việc</strong><br>
+                            <asp:Label ID="lbDesc" runat="server" Text="exp" Style="font-size: 16px; "></asp:Label></p>
+
+                        <p style="margin-left: 15px; margin-bottom: 20px;"><strong>Yêu cầu ứng viên</strong><br>
+                            <asp:Label ID="lbRequire" runat="server" Text="exp" Style="font-size: 16px; "></asp:Label></p>
+
+                        <p style="margin-left: 15px; margin-bottom: 20px;"><strong>Quyền lợi</strong> <br>
+                            <asp:Label ID="lbBenifit" runat="server" Text="exp" Style="font-size: 16px; "></asp:Label></p>
 
                     </asp:Panel>
+                        </div>
+                    <div class="small-panel">
+                        <asp:Panel ID="pnlShare" runat="server"  Height="250px" BackColor="#F2FBF6" Style="margin-right: 10px; margin-left: 630px; margin-top: -440px;">
+                            <p style="margin-left: 15px; margin-bottom: 20px;"><strong>Thông tin chung</strong> 
+                                <br>
+                                <asp:Label ID="lbCopy" runat="server" Text="Sao chép đường dẫn:" Style="font-size: 16px;"></asp:Label></p>
+                            <p style="margin-left:-15px;"><asp:TextBox ID="txtPath" runat="server" OnClick="txtPath_Click" ReadOnly="True"></asp:TextBox>   </p>
+                            <asp:Button runat="server"  ID="btnFb" BackColor="White" style="background-image:url('src/img/logo_Fb.png');background-position: center; background-size:50px 40px; background-repeat: no-repeat;margin-top:20px; color:white; width:50px;" OnClick="btnFb_Click" />
+                            <asp:Button runat="server"  ID="btnGit" BackColor="White" style="background-image:url('src/img/logo_Git.png');background-position: center; background-size:50px 40px; no-repeat; margin-top:20px;color:white; width:50px;" OnClick="btnGit_Click" />
+                        </asp:Panel>
+
+                        <div id="slider">
+                            <img src="src/img/scene2.jpg" />
+                            <img src="src/img/scene1.jpg" />
+                            <img src="src/img/scene3.jpg" />
+                        </div>
+
+
+                       
+                        </div>
                     
-                </asp:Panel>
+                    
+                </asp:Panel><!-- pnlJD-->
+                </div>
+            <asp:Panel ID="pnlInfoCO" runat="server" Width="950px" BackColor="White" Style="margin-left: 250px; height:2000px; margin-top:25px;" >
+                <asp:Label ID="lbTitleInfo" runat="server" Text="Thông tin " Style="font-size: 30px; border-left: 7px solid #00b14f; padding: 0px 25px;"></asp:Label>
+
+                <i id="icon_info" class="icon" style="background-image: url('../src/icons/location.png');"></i>
+                            <p style="margin-left: 35px; margin-bottom: 25px;"><strong>Giới thiệu</strong><br>
+                                <asp:Label ID="lbInfo" runat="server" Text="" Style="font-size: 16px;"></asp:Label></p>
+
+                <i id="icon_scale" class="icon" style="background-image: url('../src/icons/location.png');"></i>
+                            <p style="margin-left: 35px; margin-bottom: 25px;"><strong>Quy mô</strong><br>
+                                <asp:Label ID="lbScale" runat="server" Text="" Style="font-size: 16px;"></asp:Label></p>
+
+                <i id="icon_loca" class="icon" style="background-image: url('../src/icons/location.png');"></i>
+                            <p style="margin-left: 35px; margin-bottom: 25px; "><strong>Địa điểm</strong><br>
+                                <asp:Label ID="lbAddressInfo" runat="server" Text="" Style="font-size: 16px;"></asp:Label></p>
+
+                 <i id="icon_job" class="icon" style="background-image: url('../src/icons/location.png');"></i>
+                            <p style="margin-left: 35px; margin-bottom: 25px; "><strong>Việc làm cùng công ty</strong><br>
+
+        <asp:Panel ID="pnlJobs" runat="server" Height="100px" BackColor="white" style ="border:2px thin #ccc; display:flex; padding: 0px 5px" Width="950px">
+
+            <!--<div class="panel-top">
+
+                <h2>
+                    <asp:Label ID="Label1" runat="server" Text="Name" style="color:black; "></asp:Label></h2>
+                    <asp:Label ID="lbSalaryInfo" runat="server" Text="" style="font-size:15px; text-align:center;"></asp:Label>
+
+            </div>
+            <div class="panel-bottom">
+                <p><i class="fa-regular fa-clock"></i>
+                    <asp:Label ID="lbDateInfo" runat="server" Text="" style="font-size:15px;"></asp:Label></p>
+                            </p>
+                </div>-->
+
+               
+            </asp:Panel>    
+            </asp:Panel> <!-- pnlInfoCO-->
         </asp:Panel>
-       
-      
+
+
     </form>
-        </body>              
+</body>
 </html>

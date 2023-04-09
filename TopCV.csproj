@@ -60,6 +60,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -129,6 +130,7 @@
     <Content Include="css\fontawesome.min.css" />
     <Content Include="css\regular.css" />
     <Content Include="css\regular.min.css" />
+    <Content Include="css\slick.css" />
     <Content Include="css\solid.css" />
     <Content Include="css\solid.min.css" />
     <Content Include="css\style.css" />
@@ -142,7 +144,10 @@
     <Content Include="css\v5-font-face.min.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="fLogin.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fProfile.aspx" />
+    <Content Include="fRegistry.aspx" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -152,6 +157,12 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="src\img\scene3.jpg" />
+    <Content Include="src\img\scene1.jpg" />
+    <Content Include="src\img\scene2.jpg" />
+    <Content Include="src\img\logo_Fb.png" />
+    <Content Include="src\img\logo_Git.png" />
+    <Content Include="WebUserControl1.ascx" />
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -253,6 +264,27 @@
     <Compile Include="Field.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="fLogin.aspx.cs">
+      <DependentUpon>fLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fLogin.aspx.designer.cs">
+      <DependentUpon>fLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fProfile.aspx.cs">
+      <DependentUpon>fProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fProfile.aspx.designer.cs">
+      <DependentUpon>fProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="fRegistry.aspx.cs">
+      <DependentUpon>fRegistry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fRegistry.aspx.designer.cs">
+      <DependentUpon>fRegistry.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -305,6 +337,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="WebUserControl1.ascx.cs">
+      <DependentUpon>WebUserControl1.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebUserControl1.ascx.designer.cs">
+      <DependentUpon>WebUserControl1.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

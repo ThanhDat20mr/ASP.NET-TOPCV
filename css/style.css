@@ -5,7 +5,7 @@
     align-items: center;
     background-color: white;
     height: 80px;
-    padding: 0px 40px;
+    padding: 0px 0px;
     position: fixed;
     top: 0;
     left: 0;
@@ -32,14 +32,25 @@
 
     .menu li {
         float: left;
+        
+    }
+    .menu la {
+        float: left;
+        display: block;
+        color: #00ff00;
+        text-align: center;
+        padding: 14px 30px;
+        text-decoration: none;
+        font-size: 14px;
     }
 
         .menu li a {
             display: block;
             color: #01B14F;
             text-align: center;
-            padding: 14px 16px;
+            padding: 14px 0px;
             text-decoration: none;
+            font-size:14px;
         }
 
 
@@ -49,7 +60,6 @@
     background-color: #f9f9f9;
     min-width: 150px;
     z-index: 1;
-    /* overflow-y:auto; */
     max-width: 350px;
     list-style-type: none;
 }
@@ -223,3 +233,52 @@ p {
 .item {
     padding: 10px;
 }
+
+.pnlJobs {
+    display: flex;
+    padding: 0px 25px;
+}
+.panel-top {
+    flex-basis: 80%;
+    
+    padding: 10px;
+}
+
+.panel-bottom {
+    flex-basis: 20%;
+    
+    padding: 10px;
+}
+.test {
+   
+    font-size: 15px;
+    display: flex;
+    padding: 0px 0px;
+    margin-bottom: -5px;
+    color: black;
+    justify-content:center;
+}
+
+
+.child_panel {
+    display: inline-block;
+    width: 30%;
+    margin-right: 2%;
+    color: white;
+    border: 2px #ccc;
+    font-weight: bold;
+    text-align: center;
+    
+}
+
+.big-panel {
+    display: flex;
+    flex-direction: row;
+}
+.small-panel {
+    display:flex;
+    flex: 1;
+    height: 100%;
+}
+
+
