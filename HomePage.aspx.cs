@@ -86,6 +86,19 @@ namespace TopCV
                 lbExp.Text = jd.level;
             }
         }
+        string getContent(Jobs jd)
+        {
+
+            string str = "";
+            string s = jd.description;
+
+            
+            str = s.Replace("-", "<br>- "); ;
+            
+                return str;
+            
+            
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             load_cbxCarrer();
@@ -101,6 +114,9 @@ namespace TopCV
                 lbCOName.Text = jd.Company.coName;
                 lbDate.Text +=  d.ToString("dd/MM/yyyy");
                 lbAddress.Text = "- " + jd.Company.coAddress;
+                lbDesc.Text = getContent(jd);
+                lbRequire.Text = jd.requirements.Replace("-", "<br>- ");
+                lbBenifit.Text = jd.benefits.Replace("-", "<br>- ");
             }
         }
 

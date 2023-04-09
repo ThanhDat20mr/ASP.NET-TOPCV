@@ -144,7 +144,7 @@
         </div>
 
 
-        <asp:Panel ID="Panel1" runat="server"  BackColor="#F0F0F0">
+        <asp:Panel ID="Panel1" runat="server" style="height:auto" BackColor="#F0F0F0">
             <asp:Panel ID="pnlBlank" runat="server" Height="55px">
 
             </asp:Panel>
@@ -167,7 +167,7 @@
                 </ul>
             </asp:Panel>
             
-                <asp:Panel ID="pnlJD" runat="server" Height="950px" BackColor="White" Style="margin-left: 250px" Width="950px">
+                <asp:Panel ID="pnlJD" runat="server" BackColor="White" Style="margin-left: 250px; height:2000px;" Width="950px">
                     <asp:Label runat="server" Text="Chi tiết tin tuyển dụng" Style="font-size: 30px; border-left: 7px solid #00b14f; padding: 0px 25px;"></asp:Label>
                     <asp:Panel ID="pnlJDs" runat="server" Height="270px" BackColor="#F2FBF6" Style="margin-left: 15px; margin-right: 350px;border-bottom: 15px solid white;">
                         <asp:Label runat="server" Text="Thông tin chung: " Style="font-size: 18px; text-decoration: underline;"></asp:Label>
@@ -202,17 +202,33 @@
                         </div>
                     </asp:Panel>
 
-                    <asp:Panel ID="pnlAddress" runat="server" Height="85px" BackColor="#F2FBF6" Style="margin-left: 15px; margin-right: 350px;">
-                        <asp:Label runat="server" Text="Địa điểm làm việc:" Style="font-size: 18px; text-decoration: underline;"></asp:Label>
-                        
-                        <p><asp:Label ID="lbAddress" runat="server" Text="Address" Style="font-size: 16px;"></asp:Label></p>
+                    <asp:Panel ID="pnlAddress" runat="server" Height="85px" BackColor="#F2FBF6" Style="margin-left: 15px; margin-right: 350px; padding:10px">
+                        <p>
+                            <asp:Label runat="server" Text="Địa điểm làm việc:" Style="font-size: 18px; text-decoration: underline; margin-left:5px;"></asp:Label>
+                            <br>
+                            <asp:Label ID="lbAddress" runat="server" Text="Address" Style="font-size: 16px; margin-left:15px;"></asp:Label>
+                        </p>
                     </asp:Panel>
 
-                    
-                    <p style="margin-left: 35px; margin-bottom: 20px;">Mô tả công việc
+                    <asp:Panel ID="pnlContent" runat="server" Height="85px" Style="margin-left: 15px; margin-right: 350px;">
+                        <p style="margin-left: 15px; margin-bottom: 20px; height:auto;">
+                            Mô tả công việc
                                 <br>
-                                <asp:Label ID="Label1" runat="server" Text="exp" Style="font-size: 16px;"></asp:Label></p>
+                            <asp:Label ID="lbDesc" runat="server" Text="exp" Style="font-size: 16px; "></asp:Label>
+                        </p>
+                        <p style="margin-left: 15px; margin-bottom: 20px;">
+                            Yêu cầu ứng viên
+                                <br>
+                            <asp:Label ID="lbRequire" runat="server" Text="exp" Style="font-size: 16px; "></asp:Label>
+                        </p>
+                        <p style="margin-left: 15px; margin-bottom: 20px;">
+                            Quyền lợi
+                                <br>
+                            <asp:Label ID="lbBenifit" runat="server" Text="exp" Style="font-size: 16px; "></asp:Label>
+                        </p>
 
+                    </asp:Panel>
+                    
                 </asp:Panel>
         </asp:Panel>
        
