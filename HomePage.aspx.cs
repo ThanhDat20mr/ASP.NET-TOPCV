@@ -100,6 +100,7 @@ namespace TopCV
                 lbJobName.Text = jd.jobName;
                 lbCOName.Text = jd.Company.coName;
                 lbDate.Text +=  d.ToString("dd/MM/yyyy");
+                lbAddress.Text = "- " + jd.Company.coAddress;
             }
         }
 

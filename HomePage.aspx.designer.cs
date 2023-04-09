@@ -222,30 +222,30 @@ namespace TopCV
         protected global::System.Web.UI.WebControls.Label lbExp;
 
         /// <summary>
-        /// lbJDSalary control.
+        /// pnlAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbJDSalary;
+        protected global::System.Web.UI.WebControls.Panel pnlAddress;
 
         /// <summary>
-        /// lbJDCarrer control.
+        /// lbAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbJDCarrer;
+        protected global::System.Web.UI.WebControls.Label lbAddress;
 
         /// <summary>
-        /// lbJDSexsual control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbJDSexsual;
+        protected global::System.Web.UI.WebControls.Label Label1;
     }
 }

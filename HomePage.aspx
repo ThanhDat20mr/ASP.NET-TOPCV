@@ -12,22 +12,41 @@
 <link rel="stylesheet" href="css/style.css">
 <head runat="server">
     <title></title>
+
+    <!--  -->
     <script>
-        $(document).ready(function () {
+
+        /*$(document).ready(function () {
             $('a[href^="#"]').on('click', function (e) {
                 e.preventDefault();
 
-                var target = this.hash;
+                var target = this.offsetTop-80; //this.hash;
+                //window.scrollTo(500, target);
                 var $target = $(target);
 
                 $('html, body').stop().animate({
-                    'scrollTop': $target.offset().top
+                    'scrollTop': $target = $target.offset().top - 80;
                 }, 500, 'swing', function () {
+
                     window.location.hash = target;
+                    
                 });
             });
+        });*/
+        $(document).ready(function () {
+            $('a[href^="#"]').on('click', function (event) {
+                var target = $(this.getAttribute('href'));
+                if (target.length) {
+                    event.preventDefault();
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top - 80
+                    }, 500);
+                }
+            });
         });
-</script>
+
+
+    </script>
     <script>window.onscroll = function () { myFunction() };
 
         var navbar = document.getElementById("menu");
@@ -40,6 +59,7 @@
                 navbar.classList.remove("sticky");
             }
         }</script>
+    
 </head>
 <body style="height: 100px">
     <form id="form1" runat="server">
@@ -108,15 +128,6 @@
                 </div>
                 <input type="search" id="txtSearch" name="job-search">
 
-                <!--<select id="cbxCarrer" name="job-category" style="background-image: url('src/icons/company.png'); background-position: left center; background-repeat: no-repeat; padding-left: 50px;">
-
-                    <option value="">Tất cả</option>
-                    <option value="it">Công nghệ thông tin</option>
-                    <option value="finance">Tài chính</option>
-                    <option value="marketing">Marketing</option>
-                </select>-->
-
-
                 <asp:DropDownList id="cbxCarrer" runat="server" style="background-image: url('src/icons/company.png'); background-position: left center; background-repeat: no-repeat; padding-left: 50px;" OnLoad="cbxCarrer_Load">
                     <asp:ListItem Text="Tất cả" Value="All"></asp:ListItem>
                 </asp:DropDownList>
@@ -133,7 +144,7 @@
         </div>
 
 
-        <asp:Panel ID="Panel1" runat="server" Height="1000px" BackColor="#F0F0F0">
+        <asp:Panel ID="Panel1" runat="server"  BackColor="#F0F0F0">
             <asp:Panel ID="pnlBlank" runat="server" Height="55px">
 
             </asp:Panel>
@@ -150,42 +161,59 @@
             </asp:Panel>
             <asp:Panel ID="pnlTab" runat="server" Height="55px" style=" ">
                 <ul class="menu" style="background-color: #F0F0F0; display: flex; justify-content: left; align-items: center; padding: 0px 230px; color: #808080;">
-                    <li><a href='#pnlJD'>Tin tuyển dụng</a></li>
+                    <li><a href='#pnlJD' onclick="scrollToTarget()">Tin tuyển dụng</a></li>
                     <li><a href='#'>Thông tin công ty</a></li>
                     <li><a href='#'>Việc làm công ty</a></li>
                 </ul>
             </asp:Panel>
-            <asp:Panel ID="pnlJD" runat="server" Height="570px" BackColor="White" Style="margin-left: 250px" Width="950px">
-                <asp:Label runat="server" Text="Chi tiết tin tuyển dụng" style="font-size:30px; border-left: 7px solid #00b14f; padding:0px 25px;"></asp:Label>
-                <asp:Panel ID="pnlJDs" runat="server" Height="270px" BackColor="#F2FBF6" Style="margin-left: 15px; margin-right:350px; ">
-                    <asp:Label runat="server" Text="Thông tin chung" style="font-size:18px; text-decoration:underline;"></asp:Label>
-                    <div class="grid-container">
-                        <i id="salary" class="icon" style="background-image: url('../src/icons/location.png'); "></i>
-                        <p style="margin-left: 35px;margin-bottom:25px;" id="lbSalary">Mức lương<br><asp:Label ID="lbSalary" runat="server" Text="Salary" style="font-size:16px;"></asp:Label></p>
-                         <i id="amount" class="icon" style="background-image: url('../src/icons/location.png'); margin-top:95px;"></i>
-                        <p style="margin-left: 35px; margin-bottom:25px;" id="lbAmount">Số lượng tuyển<br><asp:Label ID="lbAmount" runat="server" Text="amount" style="font-size:16px;"></asp:Label></p>
-                        <i id="carrer" class="icon" style="background-image: url('../src/icons/location.png'); margin-top:170px;"></i>
-                        <p style="margin-left: 35px; margin-bottom:20px;" id="lbCarrer">Hình thức làm việc <br><asp:Label ID="lbCarrer" runat="server" Text="carrer" style="font-size:16px;"></asp:Label></p>
-                        <i id="level" class="icon" style="background-image: url('../src/icons/location.png'); "></i>
-                        <p style="margin-left: 35px;margin-bottom:25px;" id="lbLevel">Cấp bậc <br><asp:Label ID="lbLevel" runat="server" Text="level" style="font-size:16px;"></asp:Label></p>
-                         <i id="sexsual" class="icon" style="background-image: url('../src/icons/location.png'); margin-top:95px;"></i>
-                        <p style="margin-left: 35px; margin-bottom:25px;" id="lbSexsual">Giới tính <br><asp:Label ID="lbSexsual" runat="server" Text="sexsual" style="font-size:16px;"></asp:Label></p>
-                        <i id="exp" class="icon" style="background-image: url('../src/icons/location.png'); margin-top:170px;"></i>
-                        <p style="margin-left: 35px; margin-bottom:20px;" id="lbExp">Kinh nghiệm <br><asp:Label ID="lbExp" runat="server" Text="exp" style="font-size:16px;"></asp:Label></p>
-                    </div>
-                    <!--<span class="icon-text">
-                        <i id="salary" class="icon" style="background-image: url('../src/icons/location.png'); "></i>
-                        <p style="margin-left: 35px;margin-bottom:25px;">Mức lương<br><asp:Label ID="lbJDSalary" runat="server" Text="Salary" style="font-size:16px;"></asp:Label></p>
-                        <i id="carrer" class="icon" style="background-image: url('../src/icons/location.png'); margin-top:95px;"></i>
-                        <p style="margin-left: 35px; margin-bottom:25px;">Text ở giữa<br><asp:Label ID="lbJDCarrer" runat="server" Text="Carrer" style="font-size:16px;"></asp:Label></p>
-                        <i id="sexsual" class="icon" style="background-image: url('../src/icons/location.png'); margin-top:170px;"></i>
-                        <p style="margin-left: 35px; margin-bottom:20px;">Text ở giữa<br><asp:Label ID="lbJDSexsual" runat="server" Text="Sexsual" style="font-size:16px;"></asp:Label></p>
-                    </span>-->
+            
+                <asp:Panel ID="pnlJD" runat="server" Height="950px" BackColor="White" Style="margin-left: 250px" Width="950px">
+                    <asp:Label runat="server" Text="Chi tiết tin tuyển dụng" Style="font-size: 30px; border-left: 7px solid #00b14f; padding: 0px 25px;"></asp:Label>
+                    <asp:Panel ID="pnlJDs" runat="server" Height="270px" BackColor="#F2FBF6" Style="margin-left: 15px; margin-right: 350px;border-bottom: 15px solid white;">
+                        <asp:Label runat="server" Text="Thông tin chung: " Style="font-size: 18px; text-decoration: underline;"></asp:Label>
+                        <div class="grid-container">
+                            <i id="salary" class="icon" style="background-image: url('../src/icons/location.png');"></i>
+                            <p style="margin-left: 35px; margin-bottom: 25px;">Mức lương<br>
+                                <asp:Label ID="lbSalary" runat="server" Text="Salary" Style="font-size: 16px;"></asp:Label></p>
 
+                            <i id="amount" class="icon" style="background-image: url('../src/icons/location.png'); margin-left: 300px;"></i>
+                            <p style="margin-left: 35px; margin-bottom: 25px;">Số lượng tuyển<br>
+                                <asp:Label ID="lbAmount" runat="server" Text="amount" Style="font-size: 16px;"></asp:Label></p>
+
+                            <i id="carrer" class="icon" style="background-image: url('../src/icons/location.png'); margin-top: 95px;"></i>
+                            <p style="margin-left: 35px; margin-bottom: 20px;">Hình thức làm việc
+                                <br>
+                                <asp:Label ID="lbCarrer" runat="server" Text="carrer" Style="font-size: 16px;"></asp:Label></p>
+
+                            <i id="level" class="icon" style="background-image: url('../src/icons/location.png'); margin-left: 300px; margin-top: 95px;"></i>
+                            <p style="margin-left: 35px; margin-bottom: 25px;">Cấp bậc
+                                <br>
+                                <asp:Label ID="lbLevel" runat="server" Text="level" Style="font-size: 16px;"></asp:Label></p>
+
+                            <i id="sexsual" class="icon" style="background-image: url('../src/icons/location.png'); margin-top: 185px;"></i>
+                            <p style="margin-left: 35px; margin-bottom: 25px;">Giới tính
+                                <br>
+                                <asp:Label ID="lbSexsual" runat="server" Text="sexsual" Style="font-size: 16px;"></asp:Label></p>
+
+                            <i id="exp" class="icon" style="background-image: url('../src/icons/location.png'); margin-top: 185px; margin-left: 300px;"></i>
+                            <p style="margin-left: 35px; margin-bottom: 20px;">Kinh nghiệm
+                                <br>
+                                <asp:Label ID="lbExp" runat="server" Text="exp" Style="font-size: 16px;"></asp:Label></p>
+                        </div>
                     </asp:Panel>
-            </asp:Panel>
- 
 
+                    <asp:Panel ID="pnlAddress" runat="server" Height="85px" BackColor="#F2FBF6" Style="margin-left: 15px; margin-right: 350px;">
+                        <asp:Label runat="server" Text="Địa điểm làm việc:" Style="font-size: 18px; text-decoration: underline;"></asp:Label>
+                        
+                        <p><asp:Label ID="lbAddress" runat="server" Text="Address" Style="font-size: 16px;"></asp:Label></p>
+                    </asp:Panel>
+
+                    
+                    <p style="margin-left: 35px; margin-bottom: 20px;">Mô tả công việc
+                                <br>
+                                <asp:Label ID="Label1" runat="server" Text="exp" Style="font-size: 16px;"></asp:Label></p>
+
+                </asp:Panel>
         </asp:Panel>
        
       
