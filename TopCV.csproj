@@ -157,6 +157,9 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="src\img\address.png" />
+    <Content Include="src\img\job.png" />
+    <Content Include="src\img\scale.png" />
     <Content Include="src\img\scene3.jpg" />
     <Content Include="src\img\scene1.jpg" />
     <Content Include="src\img\scene2.jpg" />

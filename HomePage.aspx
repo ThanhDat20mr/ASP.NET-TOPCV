@@ -144,8 +144,7 @@
                     <option value="hcm">TP Hồ Chí Minh</option>
                     <option value="danang">Đà Nẵng</option>
                 </select>
-
-                <asp:Button runat="server" Text="Tìm kiếm" ID="btnSearch" BackColor="#00B14F" style="background-image:url('src/icons/search.png');background-position: left center; background-repeat: no-repeat; padding-left: 20px;color:white; width:150px;" />
+                <asp:Button runat="server" Text="Tìm kiếm" ID="btnSearch" BackColor="white" style="background-image:url('src/icons/search.png');background-position:  left ;background-repeat: no-repeat; padding-left: 20px;color:#00B14F; width:150px;" />
 
             </div>
         </div>
@@ -180,33 +179,37 @@
                     <asp:Panel ID="pnlJDs" runat="server" Height="270px" BackColor="#F2FBF6" Style="margin-left: 15px; margin-right: 350px;border-bottom: 15px solid white;">
                         <asp:Label runat="server" Text="Thông tin chung: " Style="font-size: 18px; text-decoration: underline;"></asp:Label>
                         <div class="grid-container">
-                            <i id="salary" class="icon" style="background-image: url('../src/icons/location.png');"></i>
+                            <i id="salary" class="icon" style="background-image: url('https://www.topcv.vn/v4/image/job-detail/icon/1.svg');"></i>
                             <p style="margin-left: 35px; margin-bottom: 25px;">Mức lương<br>
                                 <asp:Label ID="lbSalary" runat="server" Text="Salary" Style="font-size: 16px;"></asp:Label></p>
 
-                            <i id="amount" class="icon" style="background-image: url('../src/icons/location.png'); margin-left: 300px;"></i>
+                            <i id="amount" class="icon" style="background-image: url('https://www.topcv.vn/v4/image/job-detail/icon/5.svg'); margin-left: 300px;"></i>
                             <p style="margin-left: 35px; margin-bottom: 25px;">Số lượng tuyển<br>
                                 <asp:Label ID="lbAmount" runat="server" Text="amount" Style="font-size: 16px;"></asp:Label></p>
 
-                            <i id="carrer" class="icon" style="background-image: url('../src/icons/location.png'); margin-top: 95px;"></i>
+                            <i id="carrer" class="icon" style="background-image: url( 'https://www.topcv.vn/v4/image/job-detail/icon/2.svg'); margin-top: 95px;"></i>
+                         
                             <p style="margin-left: 35px; margin-bottom: 20px;">Hình thức làm việc
                                 <br>
                                 <asp:Label ID="lbCarrer" runat="server" Text="carrer" Style="font-size: 16px;"></asp:Label></p>
 
-                            <i id="level" class="icon" style="background-image: url('../src/icons/location.png'); margin-left: 300px; margin-top: 95px;"></i>
+                            <i id="level" class="icon" style="background-image: url('https://www.topcv.vn/v4/image/job-detail/icon/6.svg'); margin-left: 300px; margin-top: 95px;"></i>
                             <p style="margin-left: 35px; margin-bottom: 25px;">Cấp bậc
                                 <br>
                                 <asp:Label ID="lbLevel" runat="server" Text="level" Style="font-size: 16px;"></asp:Label></p>
 
-                            <i id="sexsual" class="icon" style="background-image: url('../src/icons/location.png'); margin-top: 185px;"></i>
+                            <i id="sexsual" class="icon" style="background-image: url('https://www.topcv.vn/v4/image/job-detail/icon/3.svg'); margin-top: 185px;"></i>
                             <p style="margin-left: 35px; margin-bottom: 25px;">Giới tính
                                 <br>
                                 <asp:Label ID="lbSexsual" runat="server" Text="sexsual" Style="font-size: 16px;"></asp:Label></p>
 
-                            <i id="exp" class="icon" style="background-image: url('../src/icons/location.png'); margin-top: 185px; margin-left: 300px;"></i>
+                            <i id="exp" class="icon" style="background-image: url('https://www.topcv.vn/v4/image/job-detail/icon/7.svg'); margin-top: 185px; margin-left: 300px;"></i>
                             <p style="margin-left: 35px; margin-bottom: 20px;">Kinh nghiệm
                                 <br>
                                 <asp:Label ID="lbExp" runat="server" Text="exp" Style="font-size: 16px;"></asp:Label></p>
+                                
+    
+    
                         </div>
                     </asp:Panel>
                         <asp:Panel ID="pnlAddress" runat="server" Height="85px" BackColor="#F2FBF6" Style="margin-left: 15px; margin-right: 350px; padding:10px">
@@ -250,23 +253,22 @@
                     
                 </asp:Panel><!-- pnlJD-->
                 </div>
-            <asp:Panel ID="pnlInfoCO" runat="server" Width="950px" BackColor="White" Style="margin-left: 250px; height:2000px; margin-top:25px;" >
+            <asp:Panel ID="pnlInfoCO" runat="server" Width="950px" BackColor="White" Style="margin-left: 250px; margin-top:25px;" Height="540px" >
                 <asp:Label ID="lbTitleInfo" runat="server" Text="Thông tin " Style="font-size: 30px; border-left: 7px solid #00b14f; padding: 0px 25px;"></asp:Label>
 
-                <i id="icon_info" class="icon" style="background-image: url('../src/icons/location.png');"></i>
-                            <p style="margin-left: 35px; margin-bottom: 25px;"><strong>Giới thiệu</strong><br>
+                            <p style="margin-left: 45px; margin-bottom: 25px;"><strong>Giới thiệu</strong><br>
                                 <asp:Label ID="lbInfo" runat="server" Text="" Style="font-size: 16px;"></asp:Label></p>
 
-                <i id="icon_scale" class="icon" style="background-image: url('../src/icons/location.png');"></i>
-                            <p style="margin-left: 35px; margin-bottom: 25px;"><strong>Quy mô</strong><br>
+                <i id="icon_scale" class="icon" style="background-image: url('https://www.topcv.vn/v4/image/job-detail/icon/9.svg');background-size:30px 30px;"></i>
+                            <p style="margin-left: 45px; margin-bottom: 25px;"><strong>Quy mô</strong><br>
                                 <asp:Label ID="lbScale" runat="server" Text="" Style="font-size: 16px;"></asp:Label></p>
 
-                <i id="icon_loca" class="icon" style="background-image: url('../src/icons/location.png');"></i>
-                            <p style="margin-left: 35px; margin-bottom: 25px; "><strong>Địa điểm</strong><br>
+                <i id="icon_loca" class="icon" style="background-image: url('https://www.topcv.vn/v4/image/job-detail/icon/10.svg');"></i>
+                            <p style="margin-left: 45px; margin-bottom: 25px; "><strong>Địa điểm</strong><br>
                                 <asp:Label ID="lbAddressInfo" runat="server" Text="" Style="font-size: 16px;"></asp:Label></p>
 
-                 <i id="icon_job" class="icon" style="background-image: url('../src/icons/location.png');"></i>
-                            <p style="margin-left: 35px; margin-bottom: 25px; "><strong>Việc làm cùng công ty</strong><br>
+                 <i id="icon_job" class="icon" style="background-image: url('../src/icons/job.png');background-size:30px 25px;"></i>
+                            <p style="margin-left: 45px; margin-bottom: 25px; "><strong>Việc làm cùng công ty</strong><br>
 
         <asp:Panel ID="pnlJobs" runat="server" Height="100px" BackColor="white" style ="border:2px thin #ccc; display:flex; padding: 0px 5px" Width="950px">
 
@@ -287,7 +289,25 @@
             </asp:Panel>    
             </asp:Panel> <!-- pnlInfoCO-->
         </asp:Panel>
-
+        <footer>
+            <asp:Panel ID="Panel2" runat="server" Height="55px" BackColor="#F0F0F0">
+            </asp:Panel>
+            <asp:Panel ID="pnlFooter" runat="server"  BackColor="White" Style=" margin-top:50px;" Height="130px" ><div class="container">
+                <div class="column">
+                    <div class="col-3">
+                        <ul class="list-inline">
+                            <li class="list-inline-item" style="margin-left:255px;">© 2014 - 2023 Công ty cổ phần TopCV Việt Nam <br />
+                                Trụ sở HN: Tầng 3, 4 tòa FS - GoldSeason số 47 Nguyễn Tuân, Thanh Xuân Trung, Thanh Xuân, Hà Nội <br />
+                                Chi nhánh TP HCM:
+                                Tầng 12, Tòa nhà Dali, 24C Phan Đăng Lưu, Phường 6, Quận Bình Thạnh, TP Hồ Chí Minh </a></li>
+                            <li><asp:ImageButton ID="imgLogo1" runat="server"  Width="179px" Height = "68px" ImageUrl="~/src/img/logo_topcv.jpg" BorderStyle="None" style="margin-top:-50px;"/></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div></asp:Panel>
+            
+        </footer>
 
     </form>
 </body>
