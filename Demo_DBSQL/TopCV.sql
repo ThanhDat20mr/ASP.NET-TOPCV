@@ -1,0 +1,57 @@
+CREATE DATABASE TopCV
+go
+USE TopCV
+GO
+CREATE TABLE Account(
+	Username VARCHAR(20) PRIMARY KEY,
+	Password VARCHAR(20),
+	Status VARCHAR(5),
+
+)
+GO
+CREATE TABLE Profile(
+	Username VARCHAR(20) PRIMARY KEY REFERENCES dbo.Account(Username),
+	Name NVARCHAR(500),
+	DoB DATETIME,
+	sexsual BIT,
+	phone VARCHAR(11),
+	address NVARCHAR(MAX),
+	avt VARCHAR(500),
+	CV VARCHAR(MAX),
+	coverletter NVARCHAR(MAX),
+)
+GO
+CREATE TABLE Field(
+	FieldID VARCHAR(50) PRIMARY KEY,
+	FieldName NVARCHAR(MAX),
+)
+GO 
+CREATE TABLE Carrer(
+	CarrerID VARCHAR(50) PRIMARY KEY,
+	CarrerName NVARCHAR(MAX),
+)
+GO
+CREATE TABLE Company(
+	coID VARCHAR(50) PRIMARY KEY,
+	coName NVARCHAR(MAX),
+	coAddress NVARCHAR(MAX),
+	scale VARCHAR(50),
+	bio NVARCHAR(MAX),
+	phone VARCHAR(11),
+	FieldID VARCHAR(50 )REFERENCES dbo.Field(FieldID),
+	CarrerID VARCHAR(50) REFERENCES dbo.Carrer(CarrerID)
+)
+
+GO 
+CREATE TABLE Jobs(
+	jobID INT IDENTITY PRIMARY KEY,
+	coID VARCHAR(50) REFERENCES dbo.Company(coID),
+	jobName NVARCHAR(MAX),
+	salary MONEY,
+	amount INT,
+	method NVARCHAR(MAX),
+	level NVARCHAR(MAX),
+	sexual BIT,
+	exp NVARCHAR(MAX),
+	description nvarchar(MAX),
+)
